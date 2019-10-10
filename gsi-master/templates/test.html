@@ -1,0 +1,50 @@
+<html>
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="-1">
+<meta http-equiv="Refresh" content="1">
+
+<head>
+	<style>
+		body {
+			margin-top: 10px;
+			font-family: Consolas;
+		}
+
+		.name {
+			font-family: Consolas;
+			font-size: 250%;
+			margin-bottom: 20px;
+			margin-top: 10px;
+
+		}
+	</style>
+</head>
+
+<body>
+	{%- if in_game -%}
+	<div class="box">
+		<p class="name">CT</p>
+		{%- for p in players -%}
+		{%- if 'CT' in players[p]['team'] -%}
+		<p class="name">{{ players[p]['name'] }}</p>
+
+		{%- endif -%}
+		{%- endfor -%}
+	</div>
+	<div class="box">
+		<p class="name">T</p>
+		{%- for p in players -%}
+			{%- if 'T' in players[p]['team'] -%}
+				<p class="name">{{ players[p]['name'] }}</p>
+				<p>{{ players[p]['team'] }}</p>
+				{%- if "active" in players[p]['weapons']['weapon_1_state'] -%}
+					<p>{{ players[p]['weapons']['weapon_1_name'] }}</p>
+				{%- endif -%}
+			{%- endif -%}
+		{%- endfor -%}
+	</div>
+	{%- endif -%}
+
+	<body>
+
+</html>

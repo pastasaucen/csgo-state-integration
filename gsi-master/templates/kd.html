@@ -1,0 +1,28 @@
+<html>
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Expires" content="-1">
+	<meta http-equiv="Refresh" content="1">
+<head>
+	<style>
+		body{
+			margin-top:10px;
+		}
+		.stats{
+			font-family: Consolas;
+			font-size: 250%;
+			margin-bottom: 20px;
+			margin-top: 10px;
+			
+		}
+	</style>
+</head>
+	
+<body>
+{%- if in_game -%}
+	<p class='stats' > Kills&nbsp;&nbsp;: {{ kills  }} </p>
+	<p class='stats' > Deaths&nbsp;: {{ deaths }} </p>
+	<p class='stats' > Item $&nbsp;: {{ inv_value }} </p>
+{%- endif -%}
+<body>
+
+</html>
