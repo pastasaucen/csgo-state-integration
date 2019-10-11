@@ -6,8 +6,8 @@ Clone / download folder
 
 Install flask and pprint
 
-´´´pip install flask´´´
-´´´pip install pprint´´´
+```pip install flask```
+```pip install pprint```
 
 When installed, launch CS:GO, start a game with bots and join as spectator.
 
