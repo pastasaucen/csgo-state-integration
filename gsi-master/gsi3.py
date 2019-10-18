@@ -1,21 +1,78 @@
 from pprint import pprint as pp
 from flask import *
+import json
+
 app = Flask(__name__)
 
 state = {}
 state['players'] = {}
 
-def getIconUrl(x):
-    return {
-        "weapon_glock": "Glock-18",
-        "weapon_usp_silencer": "USP-S",
+def getSkinName(x):
+    weaponskinsObj = open('weaponskins.json', encoding="utf8")
+    weaponskinsStr = weaponskinsObj.read()
+    weaponskins = json.loads(weaponskinsStr)
+    #pp(weaponskins)
+    try:
+        return weaponskins['paintkit_names'][x]
+        pprint('Heh')
+    except:
+        return x
+        pprint('Neh')
+
+def getWeaponName(x):
+    names = {
+        "weapon_usp_silencer": "USP",
         "weapon_hkp2000": "P2000",
+        "weapon_glock": "Glock",
         "weapon_p250": "P250",
-        "weapon_fiveseven": "Five-SeveN",
-        "weapon_cz75a": "CZ75-Auto",
-        "weapon_elite": "Dual Berettas",
-        "weapon_deagle": "Desert Eagle"
-    }[x]
+        "weapon_elite": "Duals",
+        "weapon_deagle": "Deagle",
+        "weapon_cz75a": "CZ75",
+        "weapon_fiveseven": "Five7",
+        "weapon_revolver": "Revolver",
+        "weapon_tec9": "Tec9",
+        "weapon_bizon": "PP-Bizon",
+        "weapon_mac10": "Mac-10",
+        "weapon_mp7": "MP7",
+        "weapon_mp9": "MP9",
+        "weapon_p90": "P90",
+        "weapon_ump45": "UMP-45",
+        "weapon_mp5sd": "test",
+        "weapon_m4a1": "M4A4",
+        "weapon_m4a1_silencer": "M4A1-S",
+        "weapon_ak47": "Ak47",
+        "weapon_aug": "Aug",
+        "weapon_awp": "AWP",
+        "weapon_famas": "Famas",
+        "weapon_gs3sg1": "gs3sg1",
+        "weapon_galilar": "Galil",
+        "weapon_scar20": "Scar",
+        "weapon_sg556": "Sg556",
+        "weapon_ssg08": "SSG 08",
+        "weapon_m249": "M249",
+        "weapon_mag7": "Mag7",
+        "weapon_negev": "Negev",
+        "weapon_nova": "Nova",
+        "weapon_sawedoff": "Sawed-off",
+        "weapon_xm1014": "XM1014",
+        "weapon_knife_ct": "CTKnife",
+        "weapon_knife_t": "TKnife",
+        "weapon_bayonet": "Bayonet",
+        "weapon_knife_flip": "Flip Knife",
+        "weapon_knife_gut": "Gut Knife",
+        "weapon_knife_karambit": "Karambit",
+        "weapon_knife_m9_bayonet": "M9bayonet",
+        "weapon_knife_tactical": "Huntsman",
+        "weapon_knife_butterfly": "Butterfly",
+        "weapon_knife_falchion": "Falchion",
+        "weapon_knife_survival_bowie": "Bowie",
+        "weapon_taser": "Tazer"
+    }
+
+    try:
+        return names[x]
+    except:
+        return 'test'
 
 @app.route('/', methods=['POST'])
 def hello():
@@ -51,6 +108,8 @@ def hello():
             del state['equip_value']'''
     #pp(content)
     #pp(state['players'])
+    #pp(getSkinName("something"))
+
     return json.dumps({'success':True}), 200, {'ContentType':'application/json'} 
 
 @app.route('/get')
@@ -71,7 +130,8 @@ def renderForOBS():
         playerObject[key]['health']        = state['players'][key]['state']['health']
         playerObject[key]['armor']         = state['players'][key]['state']['armor']
         playerObject[key]['helmet']        = state['players'][key]['state']['helmet']
-        #playerObject[key]['defusekit']     = state['players'][key]['state']['defusekit']
+        if 'defusekit' in state['players'][key]['state']:
+            playerObject[key]['defusekit']     = state['players'][key]['state']['defusekit']
         playerObject[key]['flashed']       = state['players'][key]['state']['flashed']
         playerObject[key]['burning']       = state['players'][key]['state']['burning']
         playerObject[key]['money']         = state['players'][key]['state']['money']
@@ -86,14 +146,52 @@ def renderForOBS():
         playerObject[key]['score']         = state['players'][key]['match_stats']['score']
         #playerObject[key]['weapons']       = state['players'][key]['weapons']
         playerObject[key]['weapons']            = {}
+        playerObject[key]['weapons']['grenades'] = {}
         if 'weapon_1' in state['players'][key]['weapons']:
             tempWep_1                          = state['players'][key]['weapons']
-            playerObject[key]['weapons']['weapon_1_name'] =  getIconUrl(tempWep_1['weapon_1']['name'])
-            playerObject[key]['weapons']['weapon_1_state'] =  tempWep_1['weapon_1']['state']
-        #tempWep_2                          = state['players'][key]['weapons']['weapon_2']
-        #playerObject[key]['weapons']['weapon_2_name'] = getIconUrl(tempWep_2['name'])
-        #playerObject[key]['weapon_1_ammo']         = state['players'][key]['weapons']['weapon_1']['ammo_clip']
-        #playerObject[key]['weapon_1_reserve']         = state['players'][key]['weapons']['weapon_1']['ammo_reserve']
+            if state['players'][key]['weapons']:
+               # playerObject[key]['weapons']['secondary_name'] =  getWeaponName(state['players'][key]['weapons']['weapon_1']['name'])
+               # playerObject[key]['weapons']['secondary_state'] =  state['players'][key]['weapons']['weapon_1']['state']
+
+                if len(state['players'][key]['weapons']) > 1:
+                    for t in state['players'][key]['weapons']:
+                        if 'type' in state['players'][key]['weapons'][t] and state['players'][key]['weapons'][t]['type'] not in ['Knife', 'Grenade', 'C4', 'Pistol']:
+                            playerObject[key]['weapons']['primary_name'] =  getWeaponName(state['players'][key]['weapons'][t]['name'])
+                            playerObject[key]['weapons']['primary_type'] =  state['players'][key]['weapons'][t]['type']
+                            playerObject[key]['weapons']['primary_state'] =  state['players'][key]['weapons'][t]['state']
+
+                        elif 'type' in state['players'][key]['weapons'][t] and state['players'][key]['weapons'][t]['type'] == 'Pistol':
+                            playerObject[key]['weapons']['secondary_name'] =  getWeaponName(state['players'][key]['weapons'][t]['name'])
+                            playerObject[key]['weapons']['secondary_type'] =  state['players'][key]['weapons'][t]['type']
+                            playerObject[key]['weapons']['secondary_state'] =  state['players'][key]['weapons'][t]['state']
+
+                        elif 'type' in state['players'][key]['weapons'][t] and state['players'][key]['weapons'][t]['type'] == 'Grenade':
+                            playerObject[key]['weapons']['grenades'][state['players'][key]['weapons'][t]['name']] = True
+                            if state['players'][key]['weapons'][t]['ammo_reserve'] > 1:
+                                playerObject[key]['weapons']['grenades'][state['players'][key]['weapons'][t]['name']+"_2"] = True
+                            
+                        elif 'type' in state['players'][key]['weapons'][t] and state['players'][key]['weapons'][t]['type'] == 'Knife':
+                            if state['players'][key]['weapons'][t]['name'] == 'weapon_knife':
+                                playerObject[key]['weapons']['knife'] = getWeaponName(state['players'][key]['weapons'][t]['name'] + "_" + state['players'][key]['team'].lower())
+                            else:
+                                playerObject[key]['weapons']['knife'] = getWeaponName(state['players'][key]['weapons'][t]['name'])
+                        
+                        elif 'type' in state['players'][key]['weapons'][t] and state['players'][key]['weapons'][t]['type'] == 'C4':
+                            playerObject[key]['C4'] = True
+
+                            #pp(playerObject[key]['weapons']['knife'])
+
+                
+                    #pp(state['players'][key]['weapons']['weapon_2'])
+
+                #pp(state['players'][key]['weapons'])
+                #tempWep_2                          = state['players'][key]['weapons']['weapon_2']
+                #playerObject[key]['weapons']['weapon_2_name'] = getIconUrl(tempWep_2['name'])
+                #playerObject[key]['weapon_1_ammo']         = state['players'][key]['weapons']['weapon_1']['ammo_clip']
+                #playerObject[key]['weapon_1_reserve']         = state['players'][key]['weapons']['weapon_1']['ammo_reserve']
+
+                skinname = state['players'][key]['weapons']['weapon_1']['paintkit']
+                playerObject[key]['weapons']['skin'] = getSkinName(skinname)
         
     if 'kills' in state and 'deaths' in state:
         kills     = state['kills']

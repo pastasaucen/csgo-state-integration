@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" height="32.0px" width="32.0px" xmlns="http://www.w3.org/2000/svg">
+  <g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)">
+    <use height="32.0" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)" width="32.0" xlink:href="#shape0"/>
+  </g>
+  <defs>
+    <g id="shape0" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)">
+      <pattern height="32" id="PatternID_866_1" overflow="visible" patternTransform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)" patternUnits="userSpaceOnUse" viewBox="0 0 32 32" width="32">
+        <image height="32" width="32" xlink:href="data:image/PNG;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAEHElEQVR42mNgIA9wAbEgw0AANkE2bzZ+liIuSa4yFj6WXKAQBz3tV5P3kJroOt3iPwjrpKhuAoqZ0c12bnGOcLNKnXMwB2hEKCwBChvQzQGcwuwZNm2Gj2EOUA6QmQkU1qKbA9gFWHLtuo3ewEMgiu4hwBZgUqJ9AuYAUGiAQoWeidBcL01lK8wBIKwSJDsbKK5NLweoK3lJT0F2AChKQFEDlGOhlyPyXaaY/0N2hFa84kqguBHVyhogNgZiE2yYS5w9yapR/yayA5wmmH7mEucoBcrzU5zO2AXYs3QSlNfoxCuvxYWRLXedhnAEExtTPrSYJi+XcYlyxOqlABPZNKjByHgqEhvZAVMRWC9VZSuXCHsqWcUzOx+zh3aiynoUC3FhdAdMQcjpJKlu4hRlCwEayUySA0DB59Rn8g1uyRQ8eCpSSCCLT4ZgzSjF5czczE4kOQCkAaQRw8BJxGEXJLZzn9kvYHadBjRWkyQ3gEo67SSls9ppSv+RsXmVzn+XCRaouB9CO/cj2C79COzYafpZREegHmiuFAllPXuWTZPhM5eJCANBFjj3AXEvDtwDxVjkHNrAOaOQ2JyhreInOxtuKbIF3Ui4E4i7oDQRWCdWdTszO0p64MPlABUZe/Fex06zX2CLu5Es6oDidmB+bwPSbRCaGKwVAW+0cHIKsYVwCHOUQh2EmVVBEirBslvR0wAI29Qa/3dqARraDMRNRGKgWnE94Rag0bIgR2gGqm62Kzf7pRmkspFLEFxeYEQNK6ist6kz/mdbb/Lftg6Ia4G4xuS/Q53Zf6dGYOKqJx5rh6luZ+NnCwCaKSogy1dlU2r62aEamDaA2DzL4C6w+ipAd4CxRojSKrhPkS2sheIaKIYahI7h4kA1otqCTUAzZdh4mb0MYjQPI6szSdG9CIyOaIwoUA9QXO5Qa/YLbGkdwlKwxioorkTCFdixdhDQ97xs3kBj9VTc5RfaV5nDLbcpM/kuYSjSDpRTQA8BFpAjNEKUtyHHv16G6n/9LDWEBeVAXIYfCykI1AHNk2DhZsmxLjR6g+x77WDV7cDgt8OVG4zUfRRX2pSbgFz636YEiotNEBaUIuESTKzlp7IV7HugJVrBKluRLQelA6AdBfjKBh1lF9k5NiXABIPsWxyWgXExgrYrMP8nIM1XBTRHWlhTsBEU3MgO0PBVWg1tb+AFOmzcLEVagUDXw3yNbiEQ2xeh0iCs5aOylZmL2YNLiD3JLEP/JrLlZun6N4DiidDcRrj/BwpGaWOxbnVv5bXqnliwBwRr+6luh2E+SZ5KoF5dJRfZueg5RNJQrAsop0hqU0EJV/MMCVsgYREg5uUQZCs2zzF4CE94oFwhwOZPzyY8L7sgezooQYNTPRMDRc01cgELKCeACiJclgMAYTQpVWcnpuEAAAAASUVORK5CYII="/>
+      </pattern>
+      <path d="M0.0 0.0 L32.0 0.0 32.0 32.0 0.0 32.0 0.0 0.0" style="fill:url(#PatternID_866_1)"/>
+    </g>
+  </defs>
+</svg>

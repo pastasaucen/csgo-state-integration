@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" height="21.0px" width="21.0px" xmlns="http://www.w3.org/2000/svg">
+  <g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)">
+    <use height="21.0" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)" width="21.0" xlink:href="#shape0"/>
+  </g>
+  <defs>
+    <g id="shape0" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)">
+      <pattern height="37" id="PatternID_864_1" overflow="visible" patternTransform="matrix(0.5669, 0.0, 0.0, 0.5669, 0.0, 0.0)" patternUnits="userSpaceOnUse" viewBox="0 0 37 37" width="37">
+        <image height="37" width="37" xlink:href="data:image/PNG;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAlCAYAAADFniADAAADmElEQVR42u1YSWiTQRQOdV9wRVHcUA8eFE+CCuJJFEFwgSKiCCJqRUHQi6JQRKGgPXnRUBeqolDwYiWeShQkECk1hYJQjTExJCSmWcmeGL8PJjBM/0mz/KWHduAh/TPvzTfvfW8ZLZaZNQ1Wm8/nW5HJZPYVi8V7pVLpI8RbMVj4HoAMYN/DbDZ7MBAIrOrs7JxtKprR0dElMH4Ah7zFYYlKAwv7C5D+XC53gpcyBVAkElkHMHdh+E+lhQX9OOw8SiQS21oCFI1GN8HQCxgsag6KQTyQYchXyDeIGxIpl8s6cP2pVGpnK4B6DYz+g/gg7wqFQgc4ttfr9S6nzsjIyOJ0Or0rn8+fg+4r7PlldCF8szUMLBQKrYHRpwbG/uL7G5LXarXOmciOSIrHJL6BrQ91h7Kvr28uPHALSjnFyHd8v1L1Sr3LZrPNg+dOQ9+phpQc83g8yyY0AvfvodsVQD+RPcdb4Se8tp+8k4HR88zKmuWCIQF6qwIoBQ9dNyOT4bFTaijJL9YxrRLIt0NWEqR+HwwGV5sBiokgOFaULw2OHmpvb59lqASPXFNrC9x7zMxCDHrsVukBoN0EbKiAH18rXrK73e6lZoIi8XHOS9guSWcNaEOIH4ekjTl47rYZQBgagqn+Te+T5NJZQXSO9TpQY9LGJJQPmwGKPY/chHxh0WVRpn05Ki6Xa5EOVFbaOIa1waywwetXeXiN3jgmpgtnPB7fIoNKyzVEi775knBe1xMl0vfU8lQUiLeaPZTBY5eNgDEjAfqkzL0qqLBcP8Cpo5MxLTKUVWA4p8zaxQFAxymnBCrPCXOyxlgxow3j4kcm2vi8Coo3IUizqrnReO1wOBbU49ZLSpyTiPOZKX0ZMBUB5IfirU+xWGzzlIESU0K34q00uTUuK5pYdrt9vhrCuhTFpOBSn0wI4wUOgM0C4jzGaTMcDq9tWFlMnh18FKjA6DGk7sZG7Pn9/pWwd4O0EHTwaNO/1uKICgBd6tDPUEI+w2tneVgtG4ODgws5VYqel1Ls+JryGA8FsAcGwDjSJDna4vf7LLBMELYk9ko2cXjmDhOE8xiLo0Er6dVOBXUC61JDKRdYeoEtiW898S8B5zSthAW5p1EKjFsc8gTHhlt8If+GnZt8vplWKpiV/A8LvmwaBBOE3hO+klrJXm1b4FOI/MGNL+KgZ2xDHHEYLpEEWRHCIY7WnPlxme3i4dpmmVnTZf0HTwzEcDeSkUoAAAAASUVORK5CYII="/>
+      </pattern>
+      <path d="M0.0 0.0 L21.0 0.0 21.0 21.0 0.0 21.0 0.0 0.0" style="fill:url(#PatternID_864_1)"/>
+    </g>
+  </defs>
+</svg>

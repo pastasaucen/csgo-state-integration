@@ -4,6 +4,7 @@
 <meta http-equiv="Refresh" content="1">
 
 <head>
+	<!--<link href="https://file.myfontastic.com/Co3L4JeX6UjxfsmSC7ido7/icons.css" rel="stylesheet">-->
 	<style>
 		body {
 			margin-top: 10px;
@@ -15,35 +16,256 @@
 			font-size: 250%;
 			margin-bottom: 20px;
 			margin-top: 10px;
-
+			text-align: center;
 		}
+
+		.box {
+			float: left;
+			clear: both;
+		}
+
+		.player-box {
+			background: rgba(207, 207, 207, 0.7);
+			width: 400px;
+			float: left;
+			margin-left: 5px;
+			margin-top: 5px;
+		}
+
+		.player-box .weapon-box {
+			height: 400px;
+			position: relative;
+		}
+
+		.weapon-box .primary {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+		}
+
+		.weapon-box .secondary {
+			position: absolute;
+			bottom: 0;
+			left: 50px;
+		}
+
+		.weapon-box .knife {
+			position: absolute;
+			bottom: 100px;
+			left: 60px;
+		}
+
+		.weapon-box .grenade {
+			width: 20px;
+		}
+
+		.weapon-box .flash {
+			position: absolute;
+			bottom: 0;
+			left: 100px;
+		}
+
+		.weapon-box .flash_2 {
+			position: absolute;
+			bottom: 0;
+			left: 110px;
+		}
+
+		.weapon-box .moly {
+			position: absolute;
+			bottom: 0;
+			left: 130px;
+		}
+
+		.weapon-box .he {
+			position: absolute;
+			bottom: 0;
+			left: 150px;
+		}
+
+		.weapon-box .smoke {
+			position: absolute;
+			bottom: 0;
+			left: 170px;
+		}
+
+		.weapon-box .bombdefuse {
+			position: absolute;
+			bottom: 50px;
+			left: 140px;
+		}
+
+		.health-bar.ct .inner {
+			width: 100%;
+			height: 50px;
+			background-image: linear-gradient(to top right, rgb(60, 29, 235), rgb(97, 53, 243));
+			font-size: 42px;
+		}
+
+		.health-bar .inner p {
+			padding: 0;
+			margin: 0;
+		}
+
+		.armor-bar .inner {
+			width: 100%;
+			height: 50px;
+			background-image: linear-gradient(to top right, rgb(128, 128, 128), rgb(197, 197, 197));
+			font-size: 42px;
+		}
+
+		.armor-bar .inner p {
+			padding: 0;
+			margin: 0;
+		}
+
+		.money {
+			font-size: 36px;
+			padding: 0;
+			margin: 0;
+			color: rgb(46, 143, 67);
+		}
+
+		/*span.cs {
+			font-family: untitled-font-4 !important;
+		}
+
+		[class^="icon-"],
+		[class*=" icon-"] {
+			height: 32px;
+			width: 32px;
+			display: inline-block;
+			fill: green;
+		}*/
 	</style>
 </head>
 
 <body>
 	{%- if in_game -%}
 	<div class="box">
-		<p class="name">CT</p>
 		{%- for p in players -%}
 		{%- if 'CT' in players[p]['team'] -%}
-		<p class="name">{{ players[p]['name'] }}</p>
-
-		{%- endif -%}
+		<div class="player-box">
+			<div class="weapon-box">
+				{%- if players[p]['weapons']['primary_name'] -%}
+				<img src="static/images/primary/{{ players[p]['weapons']['primary_name'] }}.png" class="primary" />
+				{%- endif -%}
+				{%- if players[p]['weapons']['secondary_name'] -%}
+				<img src="static/images/secondary/{{ players[p]['weapons']['secondary_name'] }}.png"
+					class="secondary" />
+				{%- endif -%}
+				{%- if players[p]['weapons']['knife'] -%}
+				<img src="static/images/knife/{{ players[p]['weapons']['knife'] }}.png" class="knife" />
+				{%- endif -%}
+				{%- if players[p]['weapons']['grenades']['weapon_flashbang'] -%}
+				<img src="static/images/grenate/Flash.png" class="grenade flash" />
+				{%- endif -%}
+				{%- if players[p]['weapons']['grenades']['weapon_flashbang_2'] -%}
+				<img src="static/images/grenate/Flash.png" class="grenade flash_2" />
+				{%- endif -%}
+				{%- if players[p]['weapons']['grenades']['weapon_molotov'] -%}
+				<img src="static/images/grenate/Molotov.png" class="grenade moly" />
+				{%- endif -%}
+				{%- if players[p]['weapons']['grenades']['weapon_incgrenade'] -%}
+				<img src="static/images/grenate/Incendary.png" class="grenade moly" />
+				{%- endif -%}
+				{%- if players[p]['weapons']['grenades']['weapon_hegrenade'] -%}
+				<img src="static/images/grenate/HE.png" class="grenade he" />
+				{%- endif -%}
+				{%- if players[p]['weapons']['grenades']['weapon_smokegrenade'] -%}
+				<img src="static/images/grenate/Smoke.png" class="grenade smoke" />
+				{%- endif -%}
+				{%- if players[p]['C4'] -%}
+				<img src="static/images/bonus2/Bomb.png" class="bombdefuse" />
+				{%- endif -%}
+				{%- if players[p]['defusekit'] -%}
+				<img src="static/images/bonus2/Defusekit.png" class="bombdefuse" />
+				{%- endif -%}
+			</div>
+			<p class="money">${{ players[p]['money'] }}</p>
+			<!--<p>Test: <span class="cs" data-icon="n">a</span></p>
+			<p>Test2: <svg class="icon-weapon-ak47">
+					<use xlink:href="#icon-weapon-ak47"></use>
+				</svg></p>-->
+			<div class="health-bar ct">
+				<div class="inner" style="width: {{ players[p]['health'] }}%">
+					<p>{{ players[p]['health'] }}</p>
+				</div>
+			</div>
+			<div class="armor-bar">
+				<div class="inner" style="width: {{ players[p]['armor'] }}%">
+					<p>{{ players[p]['armor'] }}</p>
+				</div>
+			</div>
+			<div class="image">
+				<!--<img src="https://static.hltv.org//images/playerprofile/bodyshot/compressed/12027.png" />-->
+			</div>
+			<p class="name">{{ players[p]['name'] }}</p>
+			{%- endif -%}
+		</div>
 		{%- endfor -%}
 	</div>
 	<div class="box">
-		<p class="name">T</p>
 		{%- for p in players -%}
-			{%- if 'T' in players[p]['team'] -%}
-				<p class="name">{{ players[p]['name'] }}</p>
-				<p>{{ players[p]['team'] }}</p>
-				{%- if "active" in players[p]['weapons']['weapon_1_state'] -%}
-					<p>{{ players[p]['weapons']['weapon_1_name'] }}</p>
+		{%- if 'C' not in players[p]['team'] -%}
+		<div class="player-box">
+			<div class="weapon-box">
+				{%- if players[p]['weapons']['primary_name'] -%}
+				<img src="static/images/primary/{{ players[p]['weapons']['primary_name'] }}.png" class="primary" />
 				{%- endif -%}
+				{%- if players[p]['weapons']['secondary_name'] -%}
+				<img src="static/images/secondary/{{ players[p]['weapons']['secondary_name'] }}.png"
+					class="secondary" />
+				{%- endif -%}
+				{%- if players[p]['weapons']['knife'] -%}
+				<img src="static/images/knife/{{ players[p]['weapons']['knife'] }}.png" class="knife" />
+				{%- endif -%}
+				{%- if players[p]['weapons']['grenades']['weapon_flashbang'] -%}
+				<img src="static/images/grenate/Flash.png" class="grenade flash" />
+				{%- endif -%}
+				{%- if players[p]['weapons']['grenades']['weapon_flashbang_2'] -%}
+				<img src="static/images/grenate/Flash.png" class="grenade flash_2" />
+				{%- endif -%}
+				{%- if players[p]['weapons']['grenades']['weapon_molotov'] -%}
+				<img src="static/images/grenate/Molotov.png" class="grenade moly" />
+				{%- endif -%}
+				{%- if players[p]['weapons']['grenades']['weapon_incgrenade'] -%}
+				<img src="static/images/grenate/Incendary.png" class="grenade moly" />
+				{%- endif -%}
+				{%- if players[p]['weapons']['grenades']['weapon_hegrenade'] -%}
+				<img src="static/images/grenate/HE.png" class="grenade he" />
+				{%- endif -%}
+				{%- if players[p]['weapons']['grenades']['weapon_smokegrenade'] -%}
+				<img src="static/images/grenate/Smoke.png" class="grenade smoke" />
+				{%- endif -%}
+				{%- if players[p]['C4'] -%}
+				<img src="static/images/bonus2/Bomb.png" class="bombdefuse" />
+				{%- endif -%}
+				{%- if players[p]['defusekit'] -%}
+				<img src="static/images/bonus2/Defusekit.png" class="bombdefuse" />
+				{%- endif -%}
+			</div>
+			<p class="money">${{ players[p]['money'] }}</p>
+			<div class="health-bar ct">
+				<div class="inner" style="width: {{ players[p]['health'] }}%">
+					<p>{{ players[p]['health'] }}</p>
+				</div>
+			</div>
+			<div class="armor-bar">
+				<div class="inner" style="width: {{ players[p]['armor'] }}%">
+					<p>{{ players[p]['armor'] }}</p>
+				</div>
+			</div>
+			<div class="image">
+				<img src="static/images/Player 7.png" />
+			</div>
+			<p class="name">{{ players[p]['name'] }}</p>
 			{%- endif -%}
+		</div>
 		{%- endfor -%}
 	</div>
 	{%- endif -%}
+	<!--<script src="https://file.myfontastic.com/Co3L4JeX6UjxfsmSC7ido7/icons.js"></script>-->
 
 	<body>
 
