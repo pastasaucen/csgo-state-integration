@@ -1,10 +1,9 @@
 <html>
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="-1">
-<meta http-equiv="Refresh" content="1">
+<!--<meta http-equiv="Refresh" content="1">-->
 
 <head>
-	<!--<link href="https://file.myfontastic.com/Co3L4JeX6UjxfsmSC7ido7/icons.css" rel="stylesheet">-->
 	<style>
 		body {
 			margin-top: 10px;
@@ -37,10 +36,25 @@
 			position: relative;
 		}
 
+		.player-box .weapon-box_2 {
+			height: 400px;
+			overflow: hidden;
+			clip-path: polygon(0 2%, 0% 100%, 100% 0);
+			background: rgba(0, 0, 0, .1);
+			padding: 10px;
+		}
+
 		.weapon-box .primary {
 			position: absolute;
 			bottom: 0;
 			left: 0;
+		}
+
+		.weapon-box_2 .primary_2 {
+			display: block;
+			float: left;
+			width: 85%;
+			clear: both;
 		}
 
 		.weapon-box .secondary {
@@ -49,14 +63,44 @@
 			left: 50px;
 		}
 
+		.weapon-box_2 .secondary_2 {
+			display: block;
+			float: left;
+			height: 15%;
+		}
+
 		.weapon-box .knife {
 			position: absolute;
 			bottom: 100px;
 			left: 60px;
 		}
 
+		.weapon-box_2 .knife_2 {
+			display: block;
+			float: left;
+			clear: right;
+			height: 9%;
+			margin: 3% 10px;
+		}
+
+		.weapon-box_2 .grenade_box_2 {
+			float: left;
+			clear: left;
+			height: 9%;
+			overflow: hidden;
+			transform: rotate(90deg);
+			transform-origin: bottom left;
+			margin-top: -10px;
+		}
+
 		.weapon-box .grenade {
 			width: 20px;
+		}
+
+		.weapon-box_2 .grenade_box_2 .grenade {
+			display: inline-block;
+			height: 80%;
+			margin: 0 5px;
 		}
 
 		.weapon-box .flash {
@@ -65,10 +109,20 @@
 			left: 100px;
 		}
 
+		.weapon-box_2 .flash__2 {
+			height: 100% !important;
+			margin: 0 !important;
+		}
+
 		.weapon-box .flash_2 {
 			position: absolute;
 			bottom: 0;
 			left: 110px;
+		}
+
+		.weapon-box_2 .flash__2_2 {
+			height: 100% !important;
+			margin: 0 !important;
 		}
 
 		.weapon-box .moly {
@@ -83,6 +137,8 @@
 			left: 150px;
 		}
 
+		.weapon-box_2 .grenade_box_2 .he_2 {}
+
 		.weapon-box .smoke {
 			position: absolute;
 			bottom: 0;
@@ -93,6 +149,13 @@
 			position: absolute;
 			bottom: 50px;
 			left: 140px;
+		}
+
+		.weapon-box_2 .bombdefuse_2 {
+			position: absolute;
+			top: 200px;
+			left: 80px;
+			width: 55px;
 		}
 
 		.health-bar.ct .inner {
@@ -141,6 +204,30 @@
 </head>
 
 <body>
+	<div class="box">
+		<div class="player-box">
+			<div class="weapon-box_2">
+				<img src="{{ weaponTest.primary }}" class="primary_2" />
+				<img src="{{ weaponTest.secondary }}" class="secondary_2" />
+				<img src="{{ weaponTest.knife }}" class="knife_2" />
+				<div class="grenade_box_2">
+					<img src="http://vignette2.wikia.nocookie.net/cswikia/images/a/af/Flashbang_hud_csgo.png/revision/latest/scale-to-width-down/400"
+						class="grenade flash__2" />
+					<img src="http://vignette2.wikia.nocookie.net/cswikia/images/a/af/Flashbang_hud_csgo.png/revision/latest/scale-to-width-down/400"
+						class="grenade flash__2_2" />
+					<img src="http://vignette1.wikia.nocookie.net/cswikia/images/6/60/Ammo_hegrenade_css.png/revision/latest/scale-to-width-down/400"
+						class="grenade he_2" />
+					<img src="http://vignette3.wikia.nocookie.net/cswikia/images/4/48/Smokegrenade_hud_csgo.png/revision/latest/scale-to-width-down/400"
+						class="grenade smoke_2" />
+					<!--<img src="http://vignette3.wikia.nocookie.net/cswikia/images/f/fc/Molotov_hud_csgo.png/revision/latest/scale-to-width-down/400"
+						class="grenade fire_2" />-->
+				</div>
+				<img src="static/images/bonus2/Defusekit.png" class="bombdefuse_2" />
+
+			</div>
+		</div>
+	</div>
+
 	{%- if in_game -%}
 	<div class="box">
 		{%- for p in players -%}
