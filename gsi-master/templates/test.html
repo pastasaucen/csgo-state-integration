@@ -1,7 +1,7 @@
 <html>
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="-1">
-<!--<meta http-equiv="Refresh" content="1">-->
+<meta http-equiv="Refresh" content="1">
 
 <head>
 	<style>
@@ -16,6 +16,10 @@
 			margin-bottom: 20px;
 			margin-top: 10px;
 			text-align: center;
+			width: 100%;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
 		}
 
 		.box {
@@ -31,17 +35,15 @@
 			margin-top: 5px;
 		}
 
-		.player-box .weapon-box {
-			height: 400px;
-			position: relative;
+		.player-box.t .weapon-box {
+			transform: scaleY(-1) rotate(90deg);
 		}
 
-		.player-box .weapon-box_2 {
+		.player-box .weapon-box {
 			height: 400px;
 			overflow: hidden;
-			clip-path: polygon(0 2%, 0% 100%, 100% 0);
-			background: rgba(0, 0, 0, .1);
 			padding: 10px;
+			transform: rotate(-90deg);
 		}
 
 		.weapon-box .primary {
@@ -50,11 +52,12 @@
 			left: 0;
 		}
 
-		.weapon-box_2 .primary_2 {
+		.weapon-box .primary_2 {
 			display: block;
 			float: left;
-			width: 85%;
-			clear: both;
+			max-width: 85%;
+			max-height: 100px;
+			clear: right;
 		}
 
 		.weapon-box .secondary {
@@ -63,10 +66,12 @@
 			left: 50px;
 		}
 
-		.weapon-box_2 .secondary_2 {
+		.weapon-box .secondary_2 {
 			display: block;
 			float: left;
-			height: 15%;
+			clear: left;
+			height: 12.5%;
+			margin: 3.75% 0;
 		}
 
 		.weapon-box .knife {
@@ -75,15 +80,15 @@
 			left: 60px;
 		}
 
-		.weapon-box_2 .knife_2 {
+		.weapon-box .knife_2 {
 			display: block;
 			float: left;
 			clear: right;
-			height: 9%;
-			margin: 3% 10px;
+			height: 8%;
+			margin: 3.5% 10px;
 		}
 
-		.weapon-box_2 .grenade_box_2 {
+		.weapon-box .grenade_box {
 			float: left;
 			clear: left;
 			height: 9%;
@@ -93,11 +98,11 @@
 			margin-top: -10px;
 		}
 
-		.weapon-box .grenade {
+		.weapon-box .grenade_old {
 			width: 20px;
 		}
 
-		.weapon-box_2 .grenade_box_2 .grenade {
+		.weapon-box .grenade_box .grenade {
 			display: inline-block;
 			height: 80%;
 			margin: 0 5px;
@@ -109,7 +114,7 @@
 			left: 100px;
 		}
 
-		.weapon-box_2 .flash__2 {
+		.weapon-box .flash__2 {
 			height: 100% !important;
 			margin: 0 !important;
 		}
@@ -120,7 +125,7 @@
 			left: 110px;
 		}
 
-		.weapon-box_2 .flash__2_2 {
+		.weapon-box .flash__2_2 {
 			height: 100% !important;
 			margin: 0 !important;
 		}
@@ -137,7 +142,7 @@
 			left: 150px;
 		}
 
-		.weapon-box_2 .grenade_box_2 .he_2 {}
+		.weapon-box .grenade_box_2 .he_2 {}
 
 		.weapon-box .smoke {
 			position: absolute;
@@ -151,17 +156,31 @@
 			left: 140px;
 		}
 
-		.weapon-box_2 .bombdefuse_2 {
-			position: absolute;
-			top: 200px;
-			left: 80px;
+		.weapon-box .bombdefuse_2 {
+			float: left;
+			margin-left: 40px;
+			margin-top: 35px;
 			width: 55px;
+			clear: both;
+			transform: rotate(90deg);
+			transform-origin: top right;
+		}
+
+		.player-box.t .bombdefuse_2 {
+			transform: scaleX(-1) rotate(-90deg);
 		}
 
 		.health-bar.ct .inner {
 			width: 100%;
 			height: 50px;
 			background-image: linear-gradient(to top right, rgb(60, 29, 235), rgb(97, 53, 243));
+			font-size: 42px;
+		}
+
+		.health-bar.t .inner {
+			width: 100%;
+			height: 50px;
+			background-image: linear-gradient(to top right, rgb(192, 202, 47), rgb(255, 250, 174));
 			font-size: 42px;
 		}
 
@@ -206,11 +225,11 @@
 <body>
 	<!--<div class="box">
 		<div class="player-box">
-			<div class="weapon-box_2">
-				<img src="{{ weaponTest.primary }}" class="primary_2" />
-				<img src="{{ weaponTest.secondary }}" class="secondary_2" />
-				<img src="{{ weaponTest.knife }}" class="knife_2" />
-				<div class="grenade_box_2">
+			<div class="weapon-box">
+				<img src="{ weaponTest.primary }}" class="primary_2" />
+				<img src="{ weaponTest.secondary }}" class="secondary_2" />
+				<img src="{ weaponTest.knife }}" class="knife_2" />
+				<div class="grenade_box">
 					<img src="http://vignette2.wikia.nocookie.net/cswikia/images/a/af/Flashbang_hud_csgo.png/revision/latest/scale-to-width-down/400"
 						class="grenade flash__2" />
 					<img src="http://vignette2.wikia.nocookie.net/cswikia/images/a/af/Flashbang_hud_csgo.png/revision/latest/scale-to-width-down/400"
@@ -219,54 +238,59 @@
 						class="grenade he_2" />
 					<img src="http://vignette3.wikia.nocookie.net/cswikia/images/4/48/Smokegrenade_hud_csgo.png/revision/latest/scale-to-width-down/400"
 						class="grenade smoke_2" />
-					<!--<img src="http://vignette3.wikia.nocookie.net/cswikia/images/f/fc/Molotov_hud_csgo.png/revision/latest/scale-to-width-down/400"
-						class="grenade fire_2" />-->
-				<!--</div>
+					<img src="http://vignette3.wikia.nocookie.net/cswikia/images/f/fc/Molotov_hud_csgo.png/revision/latest/scale-to-width-down/400"
+						class="grenade fire_2" />
+				</div>
 				<img src="static/images/bonus2/Defusekit.png" class="bombdefuse_2" />
-
 			</div>
-		</div>
-	</div>-->
+		</div>-->
 
 	{%- if in_game -%}
 	<div class="box">
 		{%- for p in players -%}
 		{%- if 'CT' in players[p]['team'] -%}
-		<div class="player-box">
+		<div class="player-box ct">
 			<div class="weapon-box">
 				{%- if players[p]['weapons']['primary_name'] -%}
-				<img src="static/images/primary/{{ players[p]['weapons']['primary_name'] }}.png" class="primary" />
+				<img src="{{ players[p]['weapons']['primary_name'] }}" class="primary_2" />
 				{%- endif -%}
 				{%- if players[p]['weapons']['secondary_name'] -%}
-				<img src="static/images/secondary/{{ players[p]['weapons']['secondary_name'] }}.png"
-					class="secondary" />
+				<img src="{{ players[p]['weapons']['secondary_name'] }}" class="secondary_2" />
 				{%- endif -%}
 				{%- if players[p]['weapons']['knife'] -%}
-				<img src="static/images/knife/{{ players[p]['weapons']['knife'] }}.png" class="knife" />
+				<img src="{{ players[p]['weapons']['knife'] }}" class="knife_2" />
 				{%- endif -%}
-				{%- if players[p]['weapons']['grenades']['weapon_flashbang'] -%}
-				<img src="static/images/grenate/Flash.png" class="grenade flash" />
-				{%- endif -%}
-				{%- if players[p]['weapons']['grenades']['weapon_flashbang_2'] -%}
-				<img src="static/images/grenate/Flash.png" class="grenade flash_2" />
-				{%- endif -%}
-				{%- if players[p]['weapons']['grenades']['weapon_molotov'] -%}
-				<img src="static/images/grenate/Molotov.png" class="grenade moly" />
-				{%- endif -%}
-				{%- if players[p]['weapons']['grenades']['weapon_incgrenade'] -%}
-				<img src="static/images/grenate/Incendary.png" class="grenade moly" />
-				{%- endif -%}
-				{%- if players[p]['weapons']['grenades']['weapon_hegrenade'] -%}
-				<img src="static/images/grenate/HE.png" class="grenade he" />
-				{%- endif -%}
-				{%- if players[p]['weapons']['grenades']['weapon_smokegrenade'] -%}
-				<img src="static/images/grenate/Smoke.png" class="grenade smoke" />
-				{%- endif -%}
+				<div class="grenade_box">
+					{%- if players[p]['weapons']['grenades']['weapon_flashbang'] -%}
+					<img src="http://vignette2.wikia.nocookie.net/cswikia/images/a/af/Flashbang_hud_csgo.png/revision/latest/scale-to-width-down/400"
+						class="grenade flash__2" />
+					{%- endif -%}
+					{%- if players[p]['weapons']['grenades']['weapon_flashbang_2'] -%}
+					<img src="http://vignette2.wikia.nocookie.net/cswikia/images/a/af/Flashbang_hud_csgo.png/revision/latest/scale-to-width-down/400"
+						class="grenade flas__2_2" />
+					{%- endif -%}
+					{%- if players[p]['weapons']['grenades']['weapon_hegrenade'] -%}
+					<img src="http://vignette1.wikia.nocookie.net/cswikia/images/6/60/Ammo_hegrenade_css.png/revision/latest/scale-to-width-down/400"
+						class="grenade" />
+					{%- endif -%}
+					{%- if players[p]['weapons']['grenades']['weapon_smokegrenade'] -%}
+					<img src="http://vignette3.wikia.nocookie.net/cswikia/images/4/48/Smokegrenade_hud_csgo.png/revision/latest/scale-to-width-down/400"
+						class="grenade" />
+					{%- endif -%}
+					{%- if players[p]['weapons']['grenades']['weapon_molotov'] -%}
+					<img src="http://vignette3.wikia.nocookie.net/cswikia/images/f/fc/Molotov_hud_csgo.png/revision/latest/scale-to-width-down/400"
+						class="grenade" />
+					{%- endif -%}
+					{%- if players[p]['weapons']['grenades']['weapon_incgrenade'] -%}
+					<img src="http://vignette2.wikia.nocookie.net/cswikia/images/4/45/Incgrenade_hud_csgo.png/revision/latest/scale-to-width-down/400"
+						class="grenade" />
+					{%- endif -%}
+				</div>
 				{%- if players[p]['C4'] -%}
-				<img src="static/images/bonus2/Bomb.png" class="bombdefuse" />
+				<img src="static/images/bonus2/Bomb.png" class="bombdefuse_2" />
 				{%- endif -%}
 				{%- if players[p]['defusekit'] -%}
-				<img src="static/images/bonus2/Defusekit.png" class="bombdefuse" />
+				<img src="static/images/bonus2/Defusekit.png" class="bombdefuse_2" />
 				{%- endif -%}
 			</div>
 			<p class="money">${{ players[p]['money'] }}</p>
@@ -295,45 +319,56 @@
 	<div class="box">
 		{%- for p in players -%}
 		{%- if 'C' not in players[p]['team'] -%}
-		<div class="player-box">
+		<div class="player-box t">
 			<div class="weapon-box">
 				{%- if players[p]['weapons']['primary_name'] -%}
-				<img src="static/images/primary/{{ players[p]['weapons']['primary_name'] }}.png" class="primary" />
+				<img src="{{ players[p]['weapons']['primary_name'] }}" class="primary_2" />
 				{%- endif -%}
 				{%- if players[p]['weapons']['secondary_name'] -%}
-				<img src="static/images/secondary/{{ players[p]['weapons']['secondary_name'] }}.png"
-					class="secondary" />
+				<img src="{{ players[p]['weapons']['secondary_name'] }}" class="secondary_2" />
 				{%- endif -%}
 				{%- if players[p]['weapons']['knife'] -%}
-				<img src="static/images/knife/{{ players[p]['weapons']['knife'] }}.png" class="knife" />
+				<img src="{{ players[p]['weapons']['knife'] }}" class="knife_2" />
 				{%- endif -%}
-				{%- if players[p]['weapons']['grenades']['weapon_flashbang'] -%}
-				<img src="static/images/grenate/Flash.png" class="grenade flash" />
-				{%- endif -%}
-				{%- if players[p]['weapons']['grenades']['weapon_flashbang_2'] -%}
-				<img src="static/images/grenate/Flash.png" class="grenade flash_2" />
-				{%- endif -%}
-				{%- if players[p]['weapons']['grenades']['weapon_molotov'] -%}
-				<img src="static/images/grenate/Molotov.png" class="grenade moly" />
-				{%- endif -%}
-				{%- if players[p]['weapons']['grenades']['weapon_incgrenade'] -%}
-				<img src="static/images/grenate/Incendary.png" class="grenade moly" />
-				{%- endif -%}
-				{%- if players[p]['weapons']['grenades']['weapon_hegrenade'] -%}
-				<img src="static/images/grenate/HE.png" class="grenade he" />
-				{%- endif -%}
-				{%- if players[p]['weapons']['grenades']['weapon_smokegrenade'] -%}
-				<img src="static/images/grenate/Smoke.png" class="grenade smoke" />
-				{%- endif -%}
+				<div class="grenade_box">
+					{%- if players[p]['weapons']['grenades']['weapon_flashbang'] -%}
+					<img src="http://vignette2.wikia.nocookie.net/cswikia/images/a/af/Flashbang_hud_csgo.png/revision/latest/scale-to-width-down/400"
+						class="grenade flash__2" />
+					{%- endif -%}
+					{%- if players[p]['weapons']['grenades']['weapon_flashbang_2'] -%}
+					<img src="http://vignette2.wikia.nocookie.net/cswikia/images/a/af/Flashbang_hud_csgo.png/revision/latest/scale-to-width-down/400"
+						class="grenade flas__2_2" />
+					{%- endif -%}
+					{%- if players[p]['weapons']['grenades']['weapon_hegrenade'] -%}
+					<img src="http://vignette1.wikia.nocookie.net/cswikia/images/6/60/Ammo_hegrenade_css.png/revision/latest/scale-to-width-down/400"
+						class="grenade" />
+					{%- endif -%}
+					{%- if players[p]['weapons']['grenades']['weapon_smokegrenade'] -%}
+					<img src="http://vignette3.wikia.nocookie.net/cswikia/images/4/48/Smokegrenade_hud_csgo.png/revision/latest/scale-to-width-down/400"
+						class="grenade" />
+					{%- endif -%}
+					{%- if players[p]['weapons']['grenades']['weapon_molotov'] -%}
+					<img src="http://vignette3.wikia.nocookie.net/cswikia/images/f/fc/Molotov_hud_csgo.png/revision/latest/scale-to-width-down/400"
+						class="grenade" />
+					{%- endif -%}
+					{%- if players[p]['weapons']['grenades']['weapon_incgrenade'] -%}
+					<img src="http://vignette2.wikia.nocookie.net/cswikia/images/4/45/Incgrenade_hud_csgo.png/revision/latest/scale-to-width-down/400"
+						class="grenade" />
+					{%- endif -%}
+				</div>
 				{%- if players[p]['C4'] -%}
-				<img src="static/images/bonus2/Bomb.png" class="bombdefuse" />
+				<img src="static/images/bonus2/Bomb.png" class="bombdefuse_2" />
 				{%- endif -%}
 				{%- if players[p]['defusekit'] -%}
-				<img src="static/images/bonus2/Defusekit.png" class="bombdefuse" />
+				<img src="static/images/bonus2/Defusekit.png" class="bombdefuse_2" />
 				{%- endif -%}
 			</div>
 			<p class="money">${{ players[p]['money'] }}</p>
-			<div class="health-bar ct">
+			<!--<p>Test: <span class="cs" data-icon="n">a</span></p>
+			<p>Test2: <svg class="icon-weapon-ak47">
+					<use xlink:href="#icon-weapon-ak47"></use>
+				</svg></p>-->
+			<div class="health-bar t">
 				<div class="inner" style="width: {{ players[p]['health'] }}%">
 					<p>{{ players[p]['health'] }}</p>
 				</div>
@@ -344,7 +379,7 @@
 				</div>
 			</div>
 			<div class="image">
-				<img src="static/images/Player 7.png" />
+				<!--<img src="https://static.hltv.org//images/playerprofile/bodyshot/compressed/12027.png" />-->
 			</div>
 			<p class="name">{{ players[p]['name'] }}</p>
 			{%- endif -%}

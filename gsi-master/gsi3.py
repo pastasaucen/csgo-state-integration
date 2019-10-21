@@ -19,7 +19,7 @@ def getSkinName(x):
         return x
         pprint('Neh')
 
-def getWeaponName(x):
+def oldGetWeaponName(x):
     names = {
         "weapon_usp_silencer": "USP",
         "weapon_hkp2000": "P2000",
@@ -74,7 +74,7 @@ def getWeaponName(x):
     except:
         return 'test'
 
-def testGetWeaponName(x):
+def getWeaponName(x):
     icons = {
         "weapon_cz75a": "http://vignette3.wikia.nocookie.net/cswikia/images/c/cf/C75a_hud_csgo.png/revision/latest/scale-to-width-down/400",
         "weapon_deagle": "http://vignette2.wikia.nocookie.net/cswikia/images/7/7d/Deagle_hud_go.png/revision/latest/scale-to-width-down/400",
@@ -256,16 +256,9 @@ def renderForOBS():
         deaths    = 0
         inv_value = 0
         in_game   = False'''
-    
-    testObject = {
-        "primary": testGetWeaponName("weapon_ak47"),
-        "secondary": testGetWeaponName("weapon_hkp2000"),
-        "knife": testGetWeaponName("weapon_knife_falchion")
-    }
 
     return render_template('test.html',
                             players = playerObject,
-                            weaponTest = testObject,
                            # players_2 = list(state['players'])[1],
 
                             in_game   = in_game
