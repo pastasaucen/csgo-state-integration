@@ -207,18 +207,6 @@
 			margin: 0;
 			color: rgb(46, 143, 67);
 		}
-
-		/*span.cs {
-			font-family: untitled-font-4 !important;
-		}
-
-		[class^="icon-"],
-		[class*=" icon-"] {
-			height: 32px;
-			width: 32px;
-			display: inline-block;
-			fill: green;
-		}*/
 	</style>
 </head>
 
@@ -252,13 +240,13 @@
 		<div class="player-box ct">
 			<div class="weapon-box">
 				{%- if players[p]['weapons']['primary_name'] -%}
-				<img src="{{ players[p]['weapons']['primary_name'] }}" class="primary_2" />
+				<img src="static/images/all/{{ players[p]['weapons']['primary_name'] }}.png" class="primary_2" />
 				{%- endif -%}
 				{%- if players[p]['weapons']['secondary_name'] -%}
-				<img src="{{ players[p]['weapons']['secondary_name'] }}" class="secondary_2" />
+				<img src="static/images/all/{{ players[p]['weapons']['secondary_name'] }}.png" class="secondary_2" />
 				{%- endif -%}
 				{%- if players[p]['weapons']['knife'] -%}
-				<img src="{{ players[p]['weapons']['knife'] }}" class="knife_2" />
+				<img src="static/images/all/{{ players[p]['weapons']['knife'] }}.png" class="knife_2" />
 				{%- endif -%}
 				<div class="grenade_box">
 					{%- if players[p]['weapons']['grenades']['weapon_flashbang'] -%}
@@ -294,10 +282,6 @@
 				{%- endif -%}
 			</div>
 			<p class="money">${{ players[p]['money'] }}</p>
-			<!--<p>Test: <span class="cs" data-icon="n">a</span></p>
-			<p>Test2: <svg class="icon-weapon-ak47">
-					<use xlink:href="#icon-weapon-ak47"></use>
-				</svg></p>-->
 			<div class="health-bar ct">
 				<div class="inner" style="width: {{ players[p]['health'] }}%">
 					<p>{{ players[p]['health'] }}</p>
@@ -307,9 +291,6 @@
 				<div class="inner" style="width: {{ players[p]['armor'] }}%">
 					<p>{{ players[p]['armor'] }}</p>
 				</div>
-			</div>
-			<div class="image">
-				<!--<img src="https://static.hltv.org//images/playerprofile/bodyshot/compressed/12027.png" />-->
 			</div>
 			<p class="name">{{ players[p]['name'] }}</p>
 			{%- endif -%}
@@ -322,13 +303,13 @@
 		<div class="player-box t">
 			<div class="weapon-box">
 				{%- if players[p]['weapons']['primary_name'] -%}
-				<img src="{{ players[p]['weapons']['primary_name'] }}" class="primary_2" />
+				<img src="static/images/all/{{ players[p]['weapons']['primary_name'] }}.png" class="primary_2" />
 				{%- endif -%}
 				{%- if players[p]['weapons']['secondary_name'] -%}
-				<img src="{{ players[p]['weapons']['secondary_name'] }}" class="secondary_2" />
+				<img src="static/images/all/{{ players[p]['weapons']['secondary_name'] }}.png" class="secondary_2" />
 				{%- endif -%}
 				{%- if players[p]['weapons']['knife'] -%}
-				<img src="{{ players[p]['weapons']['knife'] }}" class="knife_2" />
+				<img src="static/images/all/{{ players[p]['weapons']['knife'] }}.png" class="knife_2" />
 				{%- endif -%}
 				<div class="grenade_box">
 					{%- if players[p]['weapons']['grenades']['weapon_flashbang'] -%}
@@ -364,10 +345,6 @@
 				{%- endif -%}
 			</div>
 			<p class="money">${{ players[p]['money'] }}</p>
-			<!--<p>Test: <span class="cs" data-icon="n">a</span></p>
-			<p>Test2: <svg class="icon-weapon-ak47">
-					<use xlink:href="#icon-weapon-ak47"></use>
-				</svg></p>-->
 			<div class="health-bar t">
 				<div class="inner" style="width: {{ players[p]['health'] }}%">
 					<p>{{ players[p]['health'] }}</p>
@@ -378,16 +355,12 @@
 					<p>{{ players[p]['armor'] }}</p>
 				</div>
 			</div>
-			<div class="image">
-				<!--<img src="https://static.hltv.org//images/playerprofile/bodyshot/compressed/12027.png" />-->
-			</div>
 			<p class="name">{{ players[p]['name'] }}</p>
 			{%- endif -%}
 		</div>
 		{%- endfor -%}
 	</div>
 	{%- endif -%}
-	<!--<script src="https://file.myfontastic.com/Co3L4JeX6UjxfsmSC7ido7/icons.js"></script>-->
 
 	<body>
 

@@ -73,7 +73,7 @@ def oldGetWeaponName(x):
         return names[x]
     except:
         return 'test'
-
+'''
 def getWeaponName(x):
     icons = {
         "weapon_cz75a": "http://vignette3.wikia.nocookie.net/cswikia/images/c/cf/C75a_hud_csgo.png/revision/latest/scale-to-width-down/400",
@@ -126,7 +126,7 @@ def getWeaponName(x):
         return icons[x]
     except:
         return 'test'
-
+'''
 @app.route('/', methods=['POST'])
 def hello():
     global state
@@ -209,12 +209,12 @@ def renderForOBS():
                 if len(state['players'][key]['weapons']) > 1:
                     for t in state['players'][key]['weapons']:
                         if 'type' in state['players'][key]['weapons'][t] and state['players'][key]['weapons'][t]['type'] not in ['Knife', 'Grenade', 'C4', 'Pistol']:
-                            playerObject[key]['weapons']['primary_name'] =  getWeaponName(state['players'][key]['weapons'][t]['name'])
+                            playerObject[key]['weapons']['primary_name'] =  state['players'][key]['weapons'][t]['name']
                             playerObject[key]['weapons']['primary_type'] =  state['players'][key]['weapons'][t]['type']
                             playerObject[key]['weapons']['primary_state'] =  state['players'][key]['weapons'][t]['state']
 
                         elif 'type' in state['players'][key]['weapons'][t] and state['players'][key]['weapons'][t]['type'] == 'Pistol':
-                            playerObject[key]['weapons']['secondary_name'] =  getWeaponName(state['players'][key]['weapons'][t]['name'])
+                            playerObject[key]['weapons']['secondary_name'] =  state['players'][key]['weapons'][t]['name']
                             playerObject[key]['weapons']['secondary_type'] =  state['players'][key]['weapons'][t]['type']
                             playerObject[key]['weapons']['secondary_state'] =  state['players'][key]['weapons'][t]['state']
 
@@ -225,9 +225,9 @@ def renderForOBS():
                             
                         elif 'type' in state['players'][key]['weapons'][t] and state['players'][key]['weapons'][t]['type'] == 'Knife':
                             if state['players'][key]['weapons'][t]['name'] == 'weapon_knife':
-                                playerObject[key]['weapons']['knife'] = getWeaponName(state['players'][key]['weapons'][t]['name'] + "_" + state['players'][key]['team'].lower())
+                                playerObject[key]['weapons']['knife'] = state['players'][key]['weapons'][t]['name'] + "_" + state['players'][key]['team'].lower()
                             else:
-                                playerObject[key]['weapons']['knife'] = getWeaponName(state['players'][key]['weapons'][t]['name'])
+                                playerObject[key]['weapons']['knife'] = state['players'][key]['weapons'][t]['name']
                         
                         elif 'type' in state['players'][key]['weapons'][t] and state['players'][key]['weapons'][t]['type'] == 'C4':
                             playerObject[key]['C4'] = True
