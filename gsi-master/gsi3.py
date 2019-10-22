@@ -7,7 +7,7 @@ app = Flask(__name__)
 state = {}
 state['players'] = {}
 
-def getSkinName(x):
+'''def getSkinName(x):
     weaponskinsObj = open('weaponskins.json', encoding="utf8")
     weaponskinsStr = weaponskinsObj.read()
     weaponskins = json.loads(weaponskinsStr)
@@ -18,7 +18,7 @@ def getSkinName(x):
     except:
         return x
         pprint('Neh')
-
+'''
 def oldGetWeaponName(x):
     names = {
         "weapon_usp_silencer": "USP",
@@ -243,15 +243,15 @@ def renderForOBS():
                 #playerObject[key]['weapon_1_ammo']         = state['players'][key]['weapons']['weapon_1']['ammo_clip']
                 #playerObject[key]['weapon_1_reserve']         = state['players'][key]['weapons']['weapon_1']['ammo_reserve']
 
-                skinname = state['players'][key]['weapons']['weapon_1']['paintkit']
-                playerObject[key]['weapons']['skin'] = getSkinName(skinname)
+                #skinname = state['players'][key]['weapons']['weapon_1']['paintkit']
+                #playerObject[key]['weapons']['skin'] = getSkinName(skinname)
         
-    if 'kills' in state and 'deaths' in state:
+    '''if 'kills' in state and 'deaths' in state:
         kills     = state['kills']
         deaths    = state['deaths']
         inv_value = state['inv_value']
         in_game   = True
-    '''else:
+    else:
         kills     = 0
         deaths    = 0
         inv_value = 0
